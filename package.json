@@ -1,0 +1,24 @@
+{
+  "name": "stream-source",
+  "version": "0.0.0",
+  "description": "Read binary streams in chunks, on demand, with promises.",
+  "keywords": [
+    "binary",
+    "stream",
+    "reader"
+  ],
+  "homepage": "https://github.com/mbostock/stream-source",
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Mike Bostock",
+    "url": "https://bost.ocks.org/mike"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mbostock/stream-source.git"
+  },
+  "scripts": {
+    "postpublish": "git push && git push --tags"
+  }
+}
