@@ -1,6 +1,20 @@
 # stream-source
 
-A [readable stream default reader](https://streams.spec.whatwg.org/#readable-stream-reader) implementation on top of a Node [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable). This library allows you to write code that takes a *reader* as input, and can work with either native readable streams or Node streams.
+A [readable stream default reader](https://streams.spec.whatwg.org/#readable-stream-reader) implementation on top of a Node [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable). This library allows you to write code that takes a *reader* as input, and can work with either native readable streams or Node streams. For example, to pipe stdin to stdout:
+
+```js
+var source = stream.source(process.stdin);
+
+function read() {
+  return source.read().then((result) => {
+    if (result.done) return;
+    process.stdout.write(result.value);
+    return read();
+  });
+}
+
+read().catch((error) => console.error(error.stack));
+```
 
 ## API Reference
 
