@@ -1,5 +1,5 @@
 var http = require("http"),
-    stream = require("./");
+    stream = require("../");
 
 function read(source) {
   return source.read().then((result) => {

@@ -1,5 +1,5 @@
 var fs = require("fs"),
-    stream = require("./");
+    stream = require("../");
 
 function read(source) {
   return source.read().then((result) => {
@@ -9,5 +9,5 @@ function read(source) {
   });
 }
 
-read(stream.source(fs.createReadStream("README.md")))
+read(stream.source(fs.createReadStream("README.md", {highWaterMark: 10})))
   .catch((error) => console.error(error.stack));
