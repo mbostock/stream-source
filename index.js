@@ -1,4 +1,4 @@
-module.exports = function(stream) {
+exports.source = function(stream) {
   return new StreamSource(stream);
 };
 
@@ -19,28 +19,12 @@ function StreamSource(stream) {
   });
 }
 
+StreamSource.prototype.read = require("./read");
+StreamSource.prototype.cancel = require("./cancel");
+
 function promise(source) {
   return new Promise((resolve, reject) => {
     source._resolve = resolve;
     source._reject = reject;
   });
 }
-
-StreamSource.prototype.read = function() {
-  var read = (resolve, reject) => {
-    var buffer = this._stream.read();
-    if (buffer != null) return resolve(buffer);
-    this._readable
-      .then((end) => end ? resolve(null) : read(resolve, reject))
-      .catch((error) => reject(error));
-  };
-  return new Promise(read);
-};
-
-StreamSource.prototype.cancel = function() {
-  return new Promise((resolve, reject) => {
-    this._readable
-      .then(() => this._stream.once("close", () => resolve()).destroy())
-      .catch((error) => reject(error));
-  });
-};
