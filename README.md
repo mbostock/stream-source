@@ -5,17 +5,16 @@ A [readable stream default reader](https://streams.spec.whatwg.org/#readable-str
 ```js
 var stream = require("stream-source");
 
-var source = stream.source(process.stdin);
-
-function read() {
+function read(source) {
   return source.read().then((result) => {
     if (result.done) return;
     process.stdout.write(result.value);
-    return read();
+    return read(source);
   });
 }
 
-read().catch((error) => console.error(error.stack));
+read(stream.source(process.stdin))
+  .catch((error) => console.error(error.stack));
 ```
 
 ## API Reference
