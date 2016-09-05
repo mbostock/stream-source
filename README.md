@@ -10,9 +10,9 @@ Returns a *source* for the specified node *stream*.
 
 <a name="source_read" href="#source_read">#</a> <i>source</i>.<b>read</b>() [<>](https://github.com/mbostock/stream-source/blob/master/read.js "Source")
 
-Returns a Promise for the next chunk from the underlying stream. The yielded result is an object with the following properties:
+Returns a Promise for the next chunk of data from the underlying stream. The yielded result is an object with the following properties:
 
-* `value` - a Buffer (and a Uint8Array), or undefined if the stream ended
+* `value` - a [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) (a [Buffer](https://nodejs.org/api/buffer.html)), or undefined if the stream ended
 * `done` - a boolean which is true if the stream ended
 
 <a name="source_cancel" href="#source_cancel">#</a> <i>source</i>.<b>cancel</b>() [<>](https://github.com/mbostock/stream-source/blob/master/cancel.js "Source")
