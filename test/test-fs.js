@@ -9,5 +9,5 @@ function read(source) {
   });
 }
 
-read(stream.source(fs.createReadStream("README.md")))
+read(stream(fs.createReadStream("README.md")))
   .catch((error) => console.error(error.stack));

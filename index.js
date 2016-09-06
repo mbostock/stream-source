@@ -1,4 +1,4 @@
-exports.source = function(stream) {
+module.exports = function(stream) {
   return new StreamSource(stream);
 };
 

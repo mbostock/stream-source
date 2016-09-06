@@ -8,5 +8,5 @@ function read(source) {
   });
 }
 
-read(stream.source(process.stdin))
+read(stream(process.stdin))
   .catch((error) => console.error(error.stack));

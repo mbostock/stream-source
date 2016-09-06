@@ -15,7 +15,7 @@ http.request({
   path: "/",
   method: "GET"
 }).on("response", (response) => {
-  read(stream.source(response)).catch((error) => console.error(error.stack));
+  read(stream(response)).catch((error) => console.error(error.stack));
 }).on("error", (error) => {
   console.error(error.stack);
 }).end();

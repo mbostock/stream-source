@@ -13,7 +13,7 @@ function read(source) {
   });
 }
 
-read(stream.source(process.stdin))
+read(stream(process.stdin))
   .catch((error) => console.error(error.stack));
 ```
 
@@ -21,9 +21,9 @@ The returned *source* is a [sliceable source](https://github.com/mbostock/slice-
 
 ## API Reference
 
-<a name="source" href="#source">#</a> stream.<b>source</b>(<i>stream</i>) [<>](https://github.com/mbostock/stream-source/blob/master/index.js#L1 "Source")
+<a name="stream" href="#stream">#</a> <b>stream</b>(<i>stream</i>) [<>](https://github.com/mbostock/stream-source/blob/master/index.js#L1 "Source")
 
-Returns a *source* for the specified node *stream*.
+Returns a *source* for the specified node [readable *stream*](https://nodejs.org/api/stream.html#stream_class_stream_readable).
 
 <a name="source_read" href="#source_read">#</a> <i>source</i>.<b>read</b>([<i>length</i>]) [<>](https://github.com/mbostock/stream-source/blob/master/read.js "Source")
 
