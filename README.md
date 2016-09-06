@@ -17,6 +17,8 @@ read(stream.source(process.stdin))
   .catch((error) => console.error(error.stack));
 ```
 
+The returned *source* is a [sliceable source](https://github.com/mbostock/slice-source), which is to say that [*source*.read](#source_read) accepts an optional *length* input allowing you to read the specified number of bytes from the underlying file.
+
 ## API Reference
 
 <a name="source" href="#source">#</a> stream.<b>source</b>(<i>stream</i>) [<>](https://github.com/mbostock/stream-source/blob/master/index.js#L1 "Source")
