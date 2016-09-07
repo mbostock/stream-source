@@ -13,7 +13,8 @@
     "name": "Mike Bostock",
     "url": "https://bost.ocks.org/mike"
   },
-  "main": "index.js",
+  "main": "index.node.js",
+  "module": "index.js",
   "repository": {
     "type": "git",
     "url": "http://github.com/mbostock/stream-source.git"

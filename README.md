@@ -1,6 +1,6 @@
 # stream-source
 
-A [sliceable](https://github.com/mbostock/slice-source), [readable stream reader](https://streams.spec.whatwg.org/#readable-stream-reader) implementation on top of a Node [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable). This library allows you to write code that takes a *source* as input, and can work with either native readable streams or Node streams. For example:
+A [readable stream reader](https://streams.spec.whatwg.org/#readable-stream-reader) implementation on top of a Node [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable). This library allows you to write code that takes a *source* as input, and can work with either native readable streams or Node streams. For example:
 
 ```js
 var stream = require("stream-source");
@@ -20,8 +20,9 @@ read(stream(process.stdin))
 ## API Reference
 
 <a name="stream" href="#stream">#</a> <b>stream</b>(<i>stream</i>) [<>](https://github.com/mbostock/stream-source/blob/master/index.js#L1 "Source")
+<br><a href="#stream">#</a> <b>stream</b>(<i>reader</i>)
 
-Returns a *source* for the specified node [readable *stream*](https://nodejs.org/api/stream.html#stream_class_stream_readable).
+In Node, returns a [sliceable](https://github.com/mbostock/slice-source) *source* for the specified Node [readable *stream*](https://nodejs.org/api/stream.html#stream_class_stream_readable). In a browser, if the specified *reader* exposes a *reader*.read method, it is assumed to be a [readable stream *reader*](https://streams.spec.whatwg.org/#readable-stream-reader), and the specified *reader* is returned as-is. Otherwise, the specified *reader* is assumed to be a [readable *stream*](https://streams.spec.whatwg.org/#rs), and the reader returned by *stream*.getReader is returned.
 
 <a name="source_slice" href="#source_slice">#</a> <i>source</i>.<b>slice</b>(<i>length</i>) [<>](https://github.com/mbostock/stream-source/blob/master/slice.js "Source")
 
