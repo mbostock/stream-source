@@ -1,7 +1,7 @@
 module.exports = function() {
-  return new Promise((resolve, reject) => {
-    this._readable
-      .then(() => this._stream.once("close", () => resolve()).destroy())
-      .catch((error) => reject(error));
+  var stream = this._stream;
+  return new Promise(function(resolve) {
+    if (stream.destroyed) return resolve();
+    stream.once("close", resolve).destroy();
   });
 };
