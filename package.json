@@ -1,6 +1,6 @@
 {
   "name": "stream-source",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Read binary streams in chunks, on demand, with promises.",
   "keywords": [
     "binary",
