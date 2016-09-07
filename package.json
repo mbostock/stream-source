@@ -13,6 +13,7 @@
     "name": "Mike Bostock",
     "url": "https://bost.ocks.org/mike"
   },
+  "browser": "dist/stream-source.js",
   "main": "index.node.js",
   "module": "index.js",
   "repository": {
@@ -20,6 +21,12 @@
     "url": "http://github.com/mbostock/stream-source.git"
   },
   "scripts": {
+    "prepublish": "rm -rf dist && mkdir dist && rollup --banner \"$(preamble)\" -f umd -n sources.stream -o dist/stream-source.js -- index.js && uglifyjs --preamble \"$(preamble)\" -o dist/stream-source.min.js -cm -- dist/stream-source.js",
     "postpublish": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "package-preamble": "0.0",
+    "rollup": "0.34",
+    "uglify-js": "2"
   }
 }
