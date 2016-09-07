@@ -1,12 +1,12 @@
 var stream = require("../");
 
 function read(source) {
-  return source.read().then((result) => {
-    if (result.done) return;
-    process.stdout.write(result.value);
+  return source.slice(40).then(value => {
+    if (value == null) return;
+    process.stdout.write(value);
     return read(source);
   });
 }
 
 read(stream(process.stdin))
-  .catch((error) => console.error(error.stack));
+  .catch(error => console.error(error.stack));

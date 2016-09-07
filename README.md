@@ -5,14 +5,15 @@ A [sliceable](https://github.com/mbostock/slice-source), [readable stream reader
 ```js
 var stream = require("stream-source");
 
-Promise.resolve(slice(process.stdin))
-  .then(function read(source) {
-    return source.slice(40).then(value => {
-      if (value == null) return;
-      console.log(value);
-      return read(source);
-    });
-  })
+function read(source) {
+  return source.slice(40).then(value => {
+    if (value == null) return;
+    process.stdout.write(value);
+    return read(source);
+  });
+}
+
+read(stream(process.stdin))
   .catch(error => console.error(error.stack));
 ```
 
