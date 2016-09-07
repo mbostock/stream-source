@@ -6,7 +6,7 @@ A [readable stream reader](https://streams.spec.whatwg.org/#readable-stream-read
 var stream = require("stream-source");
 
 function read(source) {
-  return source.read().then((result) => {
+  return source.read().then(result => {
     if (result.done) return;
     process.stdout.write(result.value);
     return read(source);
@@ -14,7 +14,7 @@ function read(source) {
 }
 
 read(stream(process.stdin))
-  .catch((error) => console.error(error.stack));
+  .catch(error => console.error(error.stack));
 ```
 
 The returned *source* is a [sliceable source](https://github.com/mbostock/slice-source), which is to say that [*source*.read](#source_read) accepts an optional *length* input allowing you to read the specified number of bytes from the underlying file.
