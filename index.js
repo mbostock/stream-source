@@ -4,8 +4,8 @@ module.exports = function(stream) {
 
 function StreamSource(stream) {
   var that = this;
-  this._readable = promise(this);
-  this._stream = stream.on("readable", read).on("close", end).on("error", error);
+  that._readable = promise(that);
+  that._stream = stream.on("readable", read).on("close", end).on("error", error);
 
   function read() {
     var resolve = that._resolve;
@@ -27,6 +27,7 @@ function StreamSource(stream) {
 }
 
 StreamSource.prototype.read = require("./read");
+StreamSource.prototype.slice = require("./slice");
 StreamSource.prototype.cancel = require("./cancel");
 
 function promise(source) {
